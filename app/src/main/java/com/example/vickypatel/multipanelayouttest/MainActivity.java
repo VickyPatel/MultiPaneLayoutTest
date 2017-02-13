@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
         mRecyclerViewAdapter = new RecyclerViewAdapter(
                 this,
-                new ArrayList<>(Arrays.asList("xyz", "abc")));
+                new ArrayList<>(Arrays.asList("Xyz", "Abc", "Pqr")));
 
         mRecyclerView.setAdapter(mRecyclerViewAdapter);
 
