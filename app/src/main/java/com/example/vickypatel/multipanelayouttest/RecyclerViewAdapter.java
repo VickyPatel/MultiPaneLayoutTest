@@ -1,6 +1,7 @@
 package com.example.vickypatel.multipanelayouttest;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,10 +20,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     ArrayList<String> mItems;
     Context mContext;
+    boolean mTwoPane;
 
-    public RecyclerViewAdapter(Context context, ArrayList<String> items) {
+    public RecyclerViewAdapter(Context context, ArrayList<String> items, boolean mTwoPane) {
         this.mContext = context;
         this.mItems = items;
+        this.mTwoPane = mTwoPane;
     }
 
     @Override
@@ -58,6 +61,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 @Override
                 public void onClick(View v) {
                     Toast.makeText(mContext, mItems.get(getAdapterPosition()), Toast.LENGTH_LONG).show();
+
+                    Context context = v.getContext();
+                    Intent intent = new Intent(context, DetailActivity.class);
+                    intent.putExtra(DetailFragment.DATA, mItems.get(getAdapterPosition()));
+
+                    context.startActivity(intent);
+
                 }
             });
 
